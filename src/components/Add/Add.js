@@ -20,10 +20,6 @@ class Add extends Component {
         return this.checkin() ? "submitbtn" : "btndisabled"
     }
 
-    submit = ()=>{
-        alert('submit')
-    }
-
     handleNameChange = event =>{
         this.setState({
             name: event.target.value
@@ -54,21 +50,32 @@ class Add extends Component {
     })
     }
 
+    submitData = ()=>{
+        let url = 'http://localhost:8080/good';
+        return fetch(url,{
+            headers: {'content-type':'application/json'},
+            method:'POST',
+            body:JSON.stringify({
+                "goodName":this.state.name,
+                "price":this.state.price,
+                "unit":this.state.unit,
+                "src":this.state.src
+            }) 
+        });
+    }
+     
+
+
     submit = ()=>{
         alert(JSON.stringify(this.state) )
-        try{
-            let url = 'http://localhost:8080/good';
-            const response = fetch(url,{
-                headers: {'content-type':'application/json'},
-                method:'POST',
-                body:JSON.stringify(this.state) 
-            })
-            window.location.replace("/")
-        }
-         catch(e){
-             alert("获取商品数据失败")
-             window.location.replace("/")
-         }
+        this.submitData()
+        .then(result => {
+            alert("添加成功，返回商品页");
+        })
+        .catch(error => {
+            alert("添加商品数据失败")
+        });
+        window.location.replace("/") 
     }
 
     render() {
