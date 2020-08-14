@@ -14,7 +14,7 @@ class Shop extends Component {
     }
     getData(){
     try{
-        let url = 'http://localhost/getgoods';
+        let url = 'http://localhost:8080/goods';
         const response = fetch(url,{
             headers: {'content-type':'application/json'},
             method:'GET'
@@ -42,7 +42,7 @@ class Shop extends Component {
                     return (<div className="goods" key ={good.id}>
                         <img src={good.src} alt={good.description} className="googsimg"/>
                         <p className={good.name}>{good.name}</p>
-                        <p>单价:{good.price}元/瓶</p>
+                        <p>单价:{good.price}元/{good.unit}</p>
                         <img  className="pick" src={Submit} onClick={()=>{this.pickGoods(good.id)}} alt="购买" />
                     </div>);
                 })
