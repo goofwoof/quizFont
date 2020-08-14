@@ -1,0 +1,27 @@
+@import 'styles/variables.scss';
+
+.app {
+  width: 100%;
+  margin:0;
+  background-color: $white;
+}
+
+
+.header {
+  width: 100%;
+  height: 70px;
+  background-color: rgb(33, 4, 163);
+}
+
+.menu {
+  float: left;
+  height: 50px;
+  width: 10%;
+  margin-top: 25px;
+}
+
+.table{
+  margin-left: 10px;
+  color: white;
+  text-decoration: none;
+}
