@@ -41,7 +41,7 @@ class Shop extends Component {
           this.state.data.map(good=>{
             return (<div className="goods" key ={good.id}>
               <img src={good.src} alt={good.description} className="googsimg"/>
-              <p className={good.name}>{good.name}</p>
+              <p className={good.name}>{good.goodName}</p>
               <p>单价:{good.price}元/{good.unit}</p>
               <img  className="pick" src={Submit} onClick={()=>{this.pickGoods(good.id)}} alt="购买" />
           </div>);
